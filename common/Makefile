@@ -62,7 +62,7 @@ preview-all: ## (EXPERIMENTAL) Previews all applications on hub and managed clus
 	@common/scripts/preview-all.sh $(TARGET_REPO) $(TARGET_BRANCH)
 
 preview-%:
-	$(eval CLUSTERGROUP ?= $(shell yq ".main.clusterGroupName" values-global.yaml))
+	$(eval CLUSTERGROUP ?= $(shell yq ".main.clusterGroupName" $(VP_DIR_VALUES)/values-global.yaml))
 	@common/scripts/preview.sh $(CLUSTERGROUP) $* $(TARGET_REPO) $(TARGET_BRANCH)
 
 .PHONY: operator-deploy
